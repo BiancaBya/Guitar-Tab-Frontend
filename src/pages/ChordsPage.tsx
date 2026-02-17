@@ -71,8 +71,8 @@ export const ChordsPage = () => {
             <div className="max-w-6xl mx-auto px-6 pt-32 pb-20">
 
                 <div className="text-center mb-12 animate-fade-in-up">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 mb-6">
-                        <LayoutGrid size={32} className="text-rose-400" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 mb-6">
+                        <LayoutGrid size={32} className="text-emerald-500" />
                     </div>
                     <h1 className="text-4xl font-bold mb-4">Library & Explorer</h1>
                     <p className="text-slate-400">Discover chords, scales, and arpeggios across the entire fretboard.</p>
@@ -86,7 +86,7 @@ export const ChordsPage = () => {
                                 onClick={() => handleCategoryChange(cat)}
                                 className={`px-6 py-2.5 rounded-xl font-bold capitalize transition-all duration-300 ${
                                     activeCategory === cat
-                                        ? 'bg-rose-500 text-white shadow-[0_0_20px_rgba(244,63,94,0.4)]'
+                                        ? 'bg-emerald-500 text-white shadow-[0_0_20px_rgba(52,211,153,0.4)]'
                                         : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
                                 }`}
                             >
@@ -102,10 +102,10 @@ export const ChordsPage = () => {
                         <label className="text-xs text-slate-500 font-mono uppercase tracking-wider flex items-center gap-1"><Music size={12}/> Root Note</label>
                         <button
                             onClick={() => { setIsRootOpen(!isRootOpen); setIsTypeOpen(false); }}
-                            className={`flex items-center justify-between bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 outline-none hover:border-rose-500/50 transition font-bold text-left ${isRootOpen ? 'border-rose-500 ring-2 ring-rose-500/20' : ''}`}
+                            className={`flex items-center justify-between bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 outline-none hover:border-emerald-500/50 transition font-bold text-left ${isRootOpen ? 'border-emerald-500 ring-2 ring-emerald-500/20' : ''}`}
                         >
                             <span className="text-lg">{rootNote}</span>
-                            <ChevronDown size={18} className={`text-rose-400 transition-transform duration-300 ${isRootOpen ? 'rotate-180' : ''}`} />
+                            <ChevronDown size={18} className={`text-emerald-500 transition-transform duration-300 ${isRootOpen ? 'rotate-180' : ''}`} />
                         </button>
 
                         {isRootOpen && (
@@ -115,7 +115,7 @@ export const ChordsPage = () => {
                                         key={n}
                                         onClick={() => { setRootNote(n); setIsRootOpen(false); }}
                                         className={`p-2 cursor-pointer transition-colors text-center font-bold rounded-lg
-                                    ${rootNote === n ? 'bg-rose-500 text-white' : 'text-slate-300 hover:bg-slate-700 hover:text-white'}
+                                    ${rootNote === n ? 'bg-emerald-500 text-white' : 'text-slate-300 hover:bg-slate-700 hover:text-white'}
                                 `}
                                     >
                                         {n}
@@ -129,10 +129,10 @@ export const ChordsPage = () => {
                         <label className="text-xs text-slate-500 font-mono uppercase tracking-wider flex items-center gap-1"><Hash size={12}/> Type</label>
                         <button
                             onClick={() => { setIsTypeOpen(!isTypeOpen); setIsRootOpen(false); }}
-                            className={`flex items-center justify-between bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 outline-none hover:border-rose-500/50 transition font-bold text-left ${isTypeOpen ? 'border-rose-500 ring-2 ring-rose-500/20' : ''}`}
+                            className={`flex items-center justify-between bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 outline-none hover:border-emerald-500/50 transition font-bold text-left ${isTypeOpen ? 'border-emerald-500 ring-2 ring-emerald-500/20' : ''}`}
                         >
                             <span className="truncate">{selectedType}</span>
-                            <ChevronDown size={18} className={`text-rose-400 transition-transform duration-300 ${isTypeOpen ? 'rotate-180' : ''}`} />
+                            <ChevronDown size={18} className={`text-emerald-500 transition-transform duration-300 ${isTypeOpen ? 'rotate-180' : ''}`} />
                         </button>
 
                         {isTypeOpen && (
@@ -142,11 +142,11 @@ export const ChordsPage = () => {
                                         key={t}
                                         onClick={() => { setSelectedType(t); setIsTypeOpen(false); }}
                                         className={`px-4 py-3 cursor-pointer transition-colors text-sm font-medium flex items-center justify-between
-                                    ${selectedType === t ? 'bg-rose-500/20 text-rose-400' : 'text-slate-300 hover:bg-slate-700 hover:text-white'}
+                                    ${selectedType === t ? 'bg-emerald-500/20 text-emerald-500' : 'text-slate-300 hover:bg-slate-700 hover:text-white'}
                                 `}
                                     >
                                         {t}
-                                        {selectedType === t && <div className="w-2 h-2 rounded-full bg-rose-400"></div>}
+                                        {selectedType === t && <div className="w-2 h-2 rounded-full bg-emerald-500"></div>}
                                     </div>
                                 ))}
                             </div>
@@ -183,7 +183,7 @@ export const ChordsPage = () => {
                                             {isActive ? (
                                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-lg transition-transform hover:scale-110 cursor-default
                                                     ${isRoot
-                                                    ? 'bg-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.6)] border-2 border-white'
+                                                    ? 'bg-emerald-500 text-white shadow-[0_0_15px_rgba(52,211,153,0.6)] border-2 border-white'
                                                     : 'bg-slate-700 text-slate-200 border border-slate-500'
                                                 }`}
                                                 >
@@ -255,7 +255,7 @@ export const ChordsPage = () => {
                                                                 {isActive && (
                                                                     <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shadow-lg transition-transform hover:scale-125 cursor-default z-30
                                                                     ${isRoot
-                                                                        ? 'bg-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.6)] border-2 border-white'
+                                                                        ? 'bg-emerald-500 text-white shadow-[0_0_15px_rgba(52,211,153,0.4)] border-2 border-white'
                                                                         : 'bg-slate-700 text-slate-200 border border-slate-500'
                                                                     }`}
                                                                     >
@@ -278,7 +278,7 @@ export const ChordsPage = () => {
 
                     <div className="mt-6 flex justify-center gap-8 text-sm font-mono text-slate-400">
                         <div className="flex items-center gap-2">
-                            <div className="w-4 h-4 rounded-full bg-rose-500 border border-white"></div>
+                            <div className="w-4 h-4 rounded-full bg-emerald-500 border border-white"></div>
                             <span>Root Note ({rootNote})</span>
                         </div>
                         <div className="flex items-center gap-2">

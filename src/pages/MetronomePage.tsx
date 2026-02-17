@@ -84,8 +84,8 @@ export const MetronomePage = () => {
             <div className="max-w-2xl mx-auto px-6 pt-32 pb-20">
 
                 <div className="text-center mb-12">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 mb-6">
-                        <Activity size={32} className="text-emerald-400" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 mb-6">
+                        <Activity size={32} className="text-rose-400" />
                     </div>
                     <h1 className="text-4xl font-bold mb-4">Smart Metronome</h1>
                     <p className="text-slate-400">Perfect your timing and master complex rhythms.</p>
@@ -95,7 +95,7 @@ export const MetronomePage = () => {
 
                     <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none z-0">
                         {isPlaying && (
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full transition-opacity duration-500"></div>
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-rose-500/10 blur-[100px] rounded-full transition-opacity duration-500"></div>
                         )}
                     </div>
 
@@ -103,7 +103,7 @@ export const MetronomePage = () => {
                         <div className="text-[96px] font-extrabold leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-500">
                             {bpm}
                         </div>
-                        <div className="text-emerald-400 font-mono tracking-widest uppercase text-sm mt-2 font-bold">BPM</div>
+                        <div className="text-rose-400 font-mono tracking-widest uppercase text-sm mt-2 font-bold">BPM</div>
                     </div>
 
                     <div className="flex items-center gap-6 mb-12 relative z-10">
@@ -120,9 +120,9 @@ export const MetronomePage = () => {
                [&::-webkit-slider-thumb]:appearance-none
                [&::-webkit-slider-thumb]:w-5
                [&::-webkit-slider-thumb]:h-5
-               [&::-webkit-slider-thumb]:bg-emerald-400
+               [&::-webkit-slider-thumb]:bg-rose-400
                [&::-webkit-slider-thumb]:rounded-full
-               [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(52,211,153,0.5)]
+               [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(244,63,94,0.5)]
                [&::-webkit-slider-thumb]:transition-transform
                [&::-webkit-slider-thumb]:hover:scale-125"
                         />
@@ -137,7 +137,7 @@ export const MetronomePage = () => {
                                 key={i}
                                 className={`w-5 h-5 rounded-full transition-all duration-100 ${
                                     currentBeat === i
-                                        ? (i === 0 ? 'bg-emerald-400 scale-125 shadow-[0_0_15px_rgba(52,211,153,0.8)]' : 'bg-cyan-400 scale-110 shadow-[0_0_15px_rgba(34,211,238,0.6)]')
+                                        ? (i === 0 ? 'bg-rose-400 scale-125 shadow-[0_0_15px_rgba(244,63,94,0.8)]' : 'bg-rose-300 scale-110 shadow-[0_0_15px_rgba(244,63,94,0.5)]')
                                         : 'bg-slate-800'
                                 }`}
                             ></div>
@@ -151,12 +151,12 @@ export const MetronomePage = () => {
 
                             <button
                                 onClick={() => setIsSignatureOpen(!isSignatureOpen)}
-                                className={`flex items-center justify-between bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 outline-none hover:border-emerald-500/50 transition font-bold text-left ${isSignatureOpen ? 'border-emerald-500 ring-2 ring-emerald-500/20' : ''}`}
+                                className={`flex items-center justify-between bg-slate-800 text-white border border-slate-700 rounded-xl px-4 py-3 outline-none hover:border-rose-500/50 transition font-bold text-left ${isSignatureOpen ? 'border-rose-500 ring-2 ring-rose-500/20' : ''}`}
                             >
                                 <span>{currentSignatureLabel}</span>
                                 <ChevronDown
                                     size={18}
-                                    className={`text-emerald-400 transition-transform duration-300 ${isSignatureOpen ? 'rotate-180' : ''}`}
+                                    className={`text-rose-400 transition-transform duration-300 ${isSignatureOpen ? 'rotate-180' : ''}`}
                                 />
                             </button>
 
@@ -172,13 +172,13 @@ export const MetronomePage = () => {
                                             }}
                                             className={`px-4 py-3 cursor-pointer transition-colors text-sm font-medium flex items-center justify-between
                                         ${beatsPerMeasure === sig.value
-                                                ? 'bg-emerald-500/20 text-emerald-400'
+                                                ? 'bg-rose-500/20 text-rose-400'
                                                 : 'text-slate-300 hover:bg-slate-700 hover:text-white'
                                             }
                                     `}
                                         >
                                             {sig.label}
-                                            {beatsPerMeasure === sig.value && <div className="w-2 h-2 rounded-full bg-emerald-400"></div>}
+                                            {beatsPerMeasure === sig.value && <div className="w-2 h-2 rounded-full bg-rose-400"></div>}
                                         </div>
                                     ))}
                                 </div>
@@ -190,7 +190,7 @@ export const MetronomePage = () => {
                             className={`flex items-center justify-center w-20 h-20 rounded-full transition-all transform hover:scale-105 active:scale-95 shadow-xl ${
                                 isPlaying
                                     ? 'bg-rose-500 hover:bg-rose-400 shadow-rose-500/20'
-                                    : 'bg-emerald-500 hover:bg-emerald-400 shadow-emerald-500/20'
+                                    : 'bg-rose-500 hover:bg-rose-400 shadow-rose-500/20'
                             }`}
                         >
                             {isPlaying ? <Square size={32} className="text-white fill-current" /> : <Play size={36} className="text-white fill-current ml-2" />}

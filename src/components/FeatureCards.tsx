@@ -27,10 +27,10 @@ const features = [
         link: "/upload"
     },
     {
-        icon: <Activity size={32} className="text-emerald-400 group-hover:animate-pulse" />,
+        icon: <Activity size={32} className="text-rose-400 group-hover:animate-pulse" />,
         title: "Smart Metronome",
         desc: "Keep perfect time with visual and audio beats. Supports complex time signatures and tap tempo.",
-        color: "bg-emerald-500/10 border-emerald-500/20",
+        color: "bg-rose-500/10 border-rose-500/20",
         glow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]",
         link: "/metronome"
     },
@@ -43,10 +43,10 @@ const features = [
         link: "/tuner"
     },
     {
-        icon: <LayoutGrid size={32} className="text-rose-400 group-hover:scale-110 transition-transform duration-300" />,
+        icon: <LayoutGrid size={32} className="text-emerald-400 group-hover:scale-110 transition-transform duration-300" />,
         title: "Chord & Scale Library",
         desc: "Interactive fretboard visualizer. Explore all chord shapes, CAGED positions, scale shapes and arpeggios across the neck.",
-        color: "bg-rose-500/10 border-rose-500/20",
+        color: "bg-emerald-500/10 border-emerald-500/20",
         glow: "group-hover:shadow-[0_0_30px_-5px_rgba(244,63,94,0.3)]",
         link: "/chords"
     }
