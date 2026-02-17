@@ -179,7 +179,7 @@ export const ChordsPage = () => {
                                     const isRoot = openNoteIndex === rootIndex;
 
                                     return (
-                                        <div key={`open-${idx}`} className="flex-1 flex items-center justify-center h-20">
+                                        <div key={`open-${idx}`} className="flex-1 flex items-center justify-center">
                                             {isActive ? (
                                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-lg transition-transform hover:scale-110 cursor-default
                                                     ${isRoot
@@ -199,7 +199,7 @@ export const ChordsPage = () => {
                                 })}
                             </div>
 
-                            <div className="flex-1 relative bg-[#1a1515] rounded-lg border-y-4 border-r-4 border-l-4 border-slate-800 overflow-hidden shadow-inner">
+                            <div className="flex-1 relative bg-[#1a1515] rounded-lg border-y-4 border-r-4 border-l-4 border-slate-800 overflow-hidden shadow-inner h-[300px]">
 
                                 <div className="absolute inset-0 flex">
                                     {Array.from({ length: NUM_FRETS }).map((_, i) => (
@@ -233,7 +233,7 @@ export const ChordsPage = () => {
                                         const openNoteIndex = strData.index;
 
                                         return (
-                                            <div key={`string-${stringIdx}`} className="relative flex-1 flex items-center h-20">
+                                            <div key={`string-${stringIdx}`} className="relative flex-1 flex items-center">
 
                                                 <div
                                                     className="absolute left-0 right-0 bg-slate-400 shadow-sm"
