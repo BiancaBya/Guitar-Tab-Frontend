@@ -116,7 +116,15 @@ export const MetronomePage = () => {
                             max="300"
                             value={bpm}
                             onChange={(e) => setBpm(Number(e.target.value))}
-                            className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer
+               [&::-webkit-slider-thumb]:appearance-none
+               [&::-webkit-slider-thumb]:w-5
+               [&::-webkit-slider-thumb]:h-5
+               [&::-webkit-slider-thumb]:bg-emerald-400
+               [&::-webkit-slider-thumb]:rounded-full
+               [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(52,211,153,0.5)]
+               [&::-webkit-slider-thumb]:transition-transform
+               [&::-webkit-slider-thumb]:hover:scale-125"
                         />
                         <button onClick={() => changeBpm(1)} className="p-3 rounded-full bg-slate-800 hover:bg-slate-700 transition active:scale-95 text-slate-300">
                             <Plus size={24} />
