@@ -1,43 +1,70 @@
-import { Upload, Cpu, Download} from 'lucide-react';
+import { Upload, Cpu, Download, Activity, Mic, LayoutGrid } from 'lucide-react';
 
 const features = [
     {
-        icon: <Upload size={32} className="text-blue-400" />,
+        icon: <Upload size={32} className="text-blue-400 group-hover:-translate-y-1 transition-transform" />,
         title: "Audio Upload & Processing",
         desc: "Support for MP3, WAV, and FLAC files. Just drag & drop your recording.",
-        color: "bg-blue-500/10 border-blue-500/20"
+        color: "bg-blue-500/10 border-blue-500/20",
+        glow: "group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]"
     },
     {
-        icon: <Cpu size={32} className="text-cyan-400" />,
+        icon: <Cpu size={32} className="text-cyan-400 group-hover:rotate-180 transition-transform duration-700" />,
         title: "AI Transcription Engine",
         desc: "Our CRNN model analyzes pitch and timing with 98% accuracy.",
-        color: "bg-cyan-500/10 border-cyan-500/20"
+        color: "bg-cyan-500/10 border-cyan-500/20",
+        glow: "group-hover:shadow-[0_0_30px_-5px_rgba(6,182,212,0.3)]"
     },
     {
-        icon: <Download size={32} className="text-purple-400" />,
+        icon: <Download size={32} className="text-purple-400 group-hover:translate-y-1 transition-transform" />,
         title: "Instant Export",
         desc: "Download your tabs as PDF, MusicXML, or view them in our interactive player.",
-        color: "bg-purple-500/10 border-purple-500/20"
+        color: "bg-purple-500/10 border-purple-500/20",
+        glow: "group-hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.3)]"
+    },
+
+    {
+        icon: <Activity size={32} className="text-emerald-400 group-hover:animate-pulse" />,
+        title: "Smart Metronome",
+        desc: "Keep perfect time with visual and audio beats. Supports complex time signatures (4/4, 7/8), polyrhythms, and tap tempo.",
+        color: "bg-emerald-500/10 border-emerald-500/20",
+        glow: "group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]"
+    },
+    {
+        icon: <Mic size={32} className="text-amber-400 group-hover:-rotate-12 transition-transform duration-300" />,
+        title: "High-Precision Tuner",
+        desc: "Real-time chromatic tuner. Quickly switch between Standard, Drop D, Open G, and custom alternative tunings.",
+        color: "bg-amber-500/10 border-amber-500/20",
+        glow: "group-hover:shadow-[0_0_30px_-5px_rgba(245,158,11,0.3)]"
+    },
+    {
+        icon: <LayoutGrid size={32} className="text-rose-400 group-hover:scale-110 transition-transform duration-300" />,
+        title: "Chord & Scale Library",
+        desc: "Interactive fretboard visualizer. Explore all chord voicings, CAGED positions, scale shapes, and arpeggios across the neck.",
+        color: "bg-rose-500/10 border-rose-500/20",
+        glow: "group-hover:shadow-[0_0_30px_-5px_rgba(244,63,94,0.3)]"
     }
 ];
 
 export const FeatureCards = () => {
     return (
-        <section id="features" className="py-24 bg-slate-950 relative z-10">
+        <section id="features" className="py-24 bg-[#020617] relative z-10">
             <div className="max-w-7xl mx-auto px-6">
 
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose TabGenius?</h2>
-                    <p className="text-slate-400">Everything you need to transcribe music faster.</p>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">The Ultimate Guitar Hub</h2>
+                    <p className="text-slate-400 max-w-2xl mx-auto">
+                        Everything you need to transcribe, practice, and master your guitar skills in one place.
+                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {features.map((item, index) => (
                         <div
                             key={index}
-                            className="glass-panel p-8 rounded-2xl hover:border-blue-500/30 transition-all duration-300 group hover:-translate-y-1"
+                            className={`glass-panel p-8 rounded-2xl border border-slate-800 transition-all duration-300 group hover:-translate-y-2 ${item.glow}`}
                         >
-                            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${item.color} group-hover:scale-110 transition-transform`}>
+                            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300 ${item.color}`}>
                                 {item.icon}
                             </div>
                             <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
@@ -47,8 +74,8 @@ export const FeatureCards = () => {
                         </div>
                     ))}
                 </div>
+
             </div>
         </section>
     );
 };
-
