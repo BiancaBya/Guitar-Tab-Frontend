@@ -159,8 +159,7 @@ export const ChordsPage = () => {
                     <div className="min-w-[800px] relative mt-4 mb-4 select-none">
 
                         <div className="flex mb-2 items-end">
-                            <div className="w-10 flex-shrink-0"></div>
-                            <div className="w-4 flex-shrink-0"></div>
+                            <div className="w-14 mr-2 flex-shrink-0"></div>
 
                             <div className="flex-1 flex">
                                 {Array.from({ length: NUM_FRETS }).map((_, i) => (
@@ -172,27 +171,43 @@ export const ChordsPage = () => {
                         </div>
 
                         <div className="flex">
-                            <div className="w-10 flex-shrink-0 flex flex-col justify-between py-2 mr-2 bg-slate-900/50 rounded-l-lg border-y border-l border-slate-800">
-                                {GUITAR_STRINGS.map((str, idx) => (
-                                    <div key={`name-${idx}`} className="flex-1 flex items-center justify-center font-bold font-mono text-slate-400 text-sm h-12">
-                                        {str.name}
-                                    </div>
-                                ))}
+                            <div className="w-14 flex-shrink-0 flex flex-col justify-between py-2 mr-2 bg-slate-900/50 rounded-lg border border-slate-800 z-30 shadow-lg">
+                                {GUITAR_STRINGS.map((strData, idx) => {
+                                    const openNoteIndex = strData.index;
+                                    const noteName = NOTES[openNoteIndex];
+                                    const isActive = activeNotesIndices.includes(openNoteIndex);
+                                    const isRoot = openNoteIndex === rootIndex;
+
+                                    return (
+                                        <div key={`open-${idx}`} className="flex-1 flex items-center justify-center h-20">
+                                            {isActive ? (
+                                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-lg transition-transform hover:scale-110 cursor-default
+                                                    ${isRoot
+                                                    ? 'bg-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.6)] border-2 border-white'
+                                                    : 'bg-slate-700 text-slate-200 border border-slate-500'
+                                                }`}
+                                                >
+                                                    {noteName}
+                                                </div>
+                                            ) : (
+                                                <div className="font-bold font-mono text-slate-500 text-sm">
+                                                    {strData.name}
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
                             </div>
 
-                            <div className="flex-1 relative bg-[#1a1515] rounded-r-lg border-y-4 border-r-4 border-slate-800 overflow-hidden shadow-inner">
+                            <div className="flex-1 relative bg-[#1a1515] rounded-lg border-y-4 border-r-4 border-l-4 border-slate-800 overflow-hidden shadow-inner">
 
                                 <div className="absolute inset-0 flex">
-                                    <div className="w-2 bg-slate-300 shadow-xl z-10 flex-shrink-0"></div>
-
-                                    <div className="flex-1 flex ml-1">
-                                        {Array.from({ length: NUM_FRETS }).map((_, i) => (
-                                            <div key={`fretline-${i}`} className="flex-1 border-r-2 border-slate-600/40 bg-gradient-to-r from-transparent to-slate-800/20"></div>
-                                        ))}
-                                    </div>
+                                    {Array.from({ length: NUM_FRETS }).map((_, i) => (
+                                        <div key={`fretline-${i}`} className="flex-1 border-r-2 border-slate-600/40 bg-gradient-to-r from-transparent to-slate-800/20"></div>
+                                    ))}
                                 </div>
 
-                                <div className="absolute inset-0 flex pl-3 pointer-events-none">
+                                <div className="absolute inset-0 flex pointer-events-none">
                                     {Array.from({ length: NUM_FRETS }).map((_, i) => {
                                         const fretNum = i + 1;
                                         const hasDot = fretMarkers.includes(fretNum);
@@ -201,7 +216,7 @@ export const ChordsPage = () => {
                                         return (
                                             <div key={`marker-${i}`} className="flex-1 flex items-center justify-center">
                                                 {hasDoubleDot ? (
-                                                    <div className="flex flex-col gap-10 opacity-30">
+                                                    <div className="flex flex-col gap-20 opacity-30">
                                                         <div className="w-3 h-3 rounded-full bg-slate-400"></div>
                                                         <div className="w-3 h-3 rounded-full bg-slate-400"></div>
                                                     </div>
@@ -218,7 +233,7 @@ export const ChordsPage = () => {
                                         const openNoteIndex = strData.index;
 
                                         return (
-                                            <div key={`string-${stringIdx}`} className="relative flex-1 flex items-center h-12">
+                                            <div key={`string-${stringIdx}`} className="relative flex-1 flex items-center h-20">
 
                                                 <div
                                                     className="absolute left-0 right-0 bg-slate-400 shadow-sm"
@@ -229,43 +244,27 @@ export const ChordsPage = () => {
                                                 ></div>
 
                                                 <div className="flex w-full h-full items-center relative">
+                                                    {Array.from({ length: NUM_FRETS }).map((_, fretIdx) => {
+                                                        const noteIndexOnFret = (openNoteIndex + fretIdx + 1) % 12;
+                                                        const noteName = NOTES[noteIndexOnFret];
+                                                        const isActive = activeNotesIndices.includes(noteIndexOnFret);
+                                                        const isRoot = noteIndexOnFret === rootIndex;
 
-                                                    <div className="w-3 flex-shrink-0 flex justify-center items-center z-30 -ml-1.5">
-                                                        {activeNotesIndices.includes(openNoteIndex) && (
-                                                            <div className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-[10px] shadow-lg border
-                                                        ${openNoteIndex === rootIndex
-                                                                ? 'bg-rose-500 text-white border-white animate-pulse'
-                                                                : 'bg-slate-800 text-white border-slate-600'
-                                                            }`}
-                                                            >
-                                                                {NOTES[openNoteIndex]}
-                                                            </div>
-                                                        )}
-                                                    </div>
-
-                                                    <div className="flex-1 flex h-full ml-1">
-                                                        {Array.from({ length: NUM_FRETS }).map((_, fretIdx) => {
-                                                            const noteIndexOnFret = (openNoteIndex + fretIdx + 1) % 12;
-                                                            const noteName = NOTES[noteIndexOnFret];
-                                                            const isActive = activeNotesIndices.includes(noteIndexOnFret);
-                                                            const isRoot = noteIndexOnFret === rootIndex;
-
-                                                            return (
-                                                                <div key={`note-${stringIdx}-${fretIdx}`} className="flex-1 flex justify-center items-center relative">
-                                                                    {isActive && (
-                                                                        <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shadow-lg transition-transform hover:scale-125 cursor-default z-30
+                                                        return (
+                                                            <div key={`note-${stringIdx}-${fretIdx}`} className="flex-1 flex justify-center items-center relative">
+                                                                {isActive && (
+                                                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shadow-lg transition-transform hover:scale-125 cursor-default z-30
                                                                     ${isRoot
-                                                                            ? 'bg-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.6)] border-2 border-white'
-                                                                            : 'bg-slate-700 text-slate-200 border border-slate-500'
-                                                                        }`}
-                                                                        >
-                                                                            {noteName}
-                                                                        </div>
-                                                                    )}
-                                                                </div>
-                                                            );
-                                                        })}
-                                                    </div>
+                                                                        ? 'bg-rose-500 text-white shadow-[0_0_15px_rgba(244,63,94,0.6)] border-2 border-white'
+                                                                        : 'bg-slate-700 text-slate-200 border border-slate-500'
+                                                                    }`}
+                                                                    >
+                                                                        {noteName}
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        );
+                                                    })}
                                                 </div>
 
                                             </div>
