@@ -40,7 +40,7 @@ export const ModernHero = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                     <Link to="/upload">
                         <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-blue-600/30">
-                            Get Started Free <ArrowRight size={20} />
+                            Get Started <ArrowRight size={20} />
                         </button>
                     </Link>
 
