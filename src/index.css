@@ -28,3 +28,11 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.custom-scrollbar {
+  scrollbar-width: auto;
+  scrollbar-color: rgba(148,163,184,.35) transparent;
+  scroll-behavior: smooth;
+}
+
+
+
