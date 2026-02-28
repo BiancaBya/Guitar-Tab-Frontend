@@ -12,7 +12,7 @@ const LandingPage = () => {
             </main>
 
             <footer className="py-8 text-center text-slate-500 text-sm border-t border-slate-900">
-                © 2026 TabGenius. Built for Bachelor's Thesis.
+                TabGenius
             </footer>
         </div>
     );

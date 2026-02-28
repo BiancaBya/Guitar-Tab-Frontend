@@ -12,8 +12,8 @@ const features = [
     },
     {
         icon: <Cpu size={32} className="text-cyan-400 group-hover:rotate-180 transition-transform duration-700" />,
-        title: "AI Transcription Engine",
-        desc: "Our CRNN model analyzes pitch and timing with 98% accuracy.",
+        title: "Beginner Friendly Tabs",
+        desc: "Instantly switch to simplified arrangements optimized for the first 4 frets. Access alternative fingerings that stay within the beginner zone.",
         color: "bg-cyan-500/10 border-cyan-500/20",
         glow: "group-hover:shadow-[0_0_30px_-5px_rgba(6,182,212,0.3)]",
         link: "/upload"

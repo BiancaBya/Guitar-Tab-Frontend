@@ -168,10 +168,10 @@ export const UploadPage = () => {
 
                         <div className="mt-6 flex justify-center gap-4">
                             <button className="bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-lg text-sm font-medium transition">
-                                Download PDF (Coming Soon)
+                                Download PDF
                             </button>
                             <button className="bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-lg text-sm font-medium transition">
-                                Play MIDI (Coming Soon)
+                                Play MIDI
                             </button>
                         </div>
                     </div>

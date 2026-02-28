@@ -27,7 +27,6 @@ export const ModernNav = () => {
 
                 <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
                     <a href="#features" className="hover:text-white transition">Features</a>
-                    <a href="#how-it-works" className="hover:text-white transition">How it Works</a>
 
                     <Link to="/login">
                         <span className="hover:text-white transition cursor-pointer">Log in</span>
