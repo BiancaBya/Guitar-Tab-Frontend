@@ -4,17 +4,31 @@ import { Upload, Loader2, Music, AlertCircle, CheckCircle } from 'lucide-react';
 import { ModernNav } from '../components/ModernNav';
 import { TabVisualizer } from '../components/TabVisualizer';
 
+interface TabNote {
+    time: number;
+    duration: number;
+    string: number;
+    fret: number;
+    pitch: number;
+}
+
+interface TabResponse {
+    original: TabNote[];
+    beginner: TabNote[];
+}
+
 export const UploadPage = () => {
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [tabData, setTabData] = useState<any[] | null>(null);
+    const [fullResponse, setFullResponse] = useState<TabResponse | null>(null);
+    const [displayMode, setDisplayMode] = useState<'original' | 'beginner'>('original');
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             setFile(e.target.files[0]);
             setError(null);
-            setTabData(null);
+            setFullResponse(null);
         }
     };
 
@@ -31,18 +45,24 @@ export const UploadPage = () => {
         formData.append("file", file);
 
         try {
-
             const response = await axios.post("http://127.0.0.1:8000/predict-tab/", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
 
-            console.log("Response from server:", response.data);
-            setTabData(response.data.tablature);
-        } catch (err: any) {
-            console.error(err);
-            setError("Error processing file. Is the backend running? Check console.");
+            setFullResponse({
+                original: response.data.tablature,
+                beginner: response.data.tablature_beginner
+            });
+            setDisplayMode('original');
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                console.error(err.message);
+                setError(err.message || "Error processing file.");
+            } else {
+                setError("An unknown error occurred.");
+            }
         } finally {
             setLoading(false);
         }
@@ -112,14 +132,39 @@ export const UploadPage = () => {
                     )}
                 </div>
 
-                {tabData && (
+                {fullResponse && (
                     <div className="mt-12 animate-fade-in-up">
-                        <div className="flex items-center gap-2 mb-4 text-green-400">
-                            <CheckCircle size={24} />
-                            <h2 className="text-2xl font-bold text-white">Success! Here is your tab:</h2>
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                            <div className="flex items-center gap-2 text-green-400">
+                                <CheckCircle size={24} />
+                                <h2 className="text-2xl font-bold text-white">Success! Here is your tab:</h2>
+                            </div>
+
+                            <div className="flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+                                <button
+                                    onClick={() => setDisplayMode('original')}
+                                    className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
+                                        displayMode === 'original'
+                                            ? 'bg-blue-600 text-white shadow-lg'
+                                            : 'text-slate-400 hover:text-slate-200'
+                                    }`}
+                                >
+                                    Original Tab
+                                </button>
+                                <button
+                                    onClick={() => setDisplayMode('beginner')}
+                                    className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
+                                        displayMode === 'beginner'
+                                            ? 'bg-green-600 text-white shadow-lg'
+                                            : 'text-slate-400 hover:text-slate-200'
+                                    }`}
+                                >
+                                    Beginner Friendly
+                                </button>
+                            </div>
                         </div>
 
-                        <TabVisualizer data={tabData} />
+                        <TabVisualizer data={displayMode === 'original' ? fullResponse.original : fullResponse.beginner} />
 
                         <div className="mt-6 flex justify-center gap-4">
                             <button className="bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-lg text-sm font-medium transition">
@@ -131,7 +176,6 @@ export const UploadPage = () => {
                         </div>
                     </div>
                 )}
-
             </div>
         </div>
     );
