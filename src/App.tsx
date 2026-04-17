@@ -16,8 +16,8 @@ function App() {
                 <Route path="/tuner" element={<TunerPage />} />
                 <Route path="/chords" element={<ChordsPage />} />
 
-                <Route path="/login" element={<div className="text-white pt-20 text-center">Login Page Coming Soon</div>} />
-                <Route path="/register" element={<div className="text-white pt-20 text-center">Register Page Coming Soon</div>} />
+                <Route path="/login" element={<div className="text-white pt-20 text-center"></div>} />
+                <Route path="/register" element={<div className="text-white pt-20 text-center"></div>} />
             </Routes>
         </Router>
     );

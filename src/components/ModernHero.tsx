@@ -28,13 +28,13 @@ export const ModernHero = () => {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-white drop-shadow-2xl">
-                    Generate Guitar Tabs with AI <br />
+                    Generate Guitar Tabs <br />
                     <span className="text-gradient">Directly From Your Audio</span>
                 </h1>
 
                 <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                    TabGenius uses AI to instantly your favorite songs
-                    convert them into accurate tablature
+                    TabGenius uses AI to instantly convert your
+                    favorite songs into accurate tablature
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
