@@ -21,7 +21,7 @@ export const TabVisualizer: React.FC<TabVisualizerProps> = ({ data }) => {
         const sortedData = [...data].sort((a, b) => a.time - b.time);
 
         sortedData.forEach(note => {
-            const existingGroup = groups.find(g => Math.abs(g.time - note.time) < 0.05);
+            const existingGroup = groups.find(g => Math.abs(g.time - note.time) < 0.01);
 
             if (existingGroup) {
                 existingGroup.notes.push(note);
@@ -77,7 +77,7 @@ export const TabVisualizer: React.FC<TabVisualizerProps> = ({ data }) => {
                                     <div key={colIndex} className="flex-1 relative h-full">
 
                                         {column.notes.map((note, noteIndex) => {
-                                            const visualStringIndex = 6 - note.string;
+                                            const visualStringIndex = note.string - 1;
 
                                             return (
                                                 <div
