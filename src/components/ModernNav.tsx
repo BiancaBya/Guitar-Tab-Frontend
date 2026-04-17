@@ -26,7 +26,6 @@ export const ModernNav = () => {
                 </Link>
 
                 <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                    <a href="#features" className="hover:text-white transition">Features</a>
 
                     <Link to="/login">
                         <span className="hover:text-white transition cursor-pointer">Log in</span>
@@ -46,7 +45,6 @@ export const ModernNav = () => {
 
             {mobileMenuOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full glass-panel border-t border-slate-800 p-6 flex flex-col gap-4 shadow-2xl">
-                    <a href="#features" className="text-slate-300 hover:text-white">Features</a>
                     <Link to="/login" className="text-slate-300 hover:text-white">Log in</Link>
                     <Link to="/register" className="bg-blue-600 text-center py-2 rounded-lg text-white font-medium">Sign up</Link>
                 </div>
