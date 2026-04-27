@@ -1,0 +1,48 @@
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { AuthLayout } from '../components/AuthLayout';
+import { saveAuthData } from '../utils/auth';
+
+const API_BASE_URL = 'http://127.0.0.1:8000';
+
+interface TokenResponse {
+    access_token: string;
+    token_type: string;
+}
+
+export const RegisterPage = () => {
+    const navigate = useNavigate();
+
+    const handleRegister = async (username: string, password: string) => {
+        await axios.post(`${API_BASE_URL}/register`, {
+            username,
+            password,
+        });
+
+        const formData = new URLSearchParams();
+        formData.append('username', username);
+        formData.append('password', password);
+
+        const response = await axios.post<TokenResponse>(`${API_BASE_URL}/token`, formData, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        });
+
+        saveAuthData(response.data.access_token, username);
+        navigate('/upload');
+    };
+
+    return (
+        <AuthLayout
+            title="Create account"
+            subtitle="Save every generated tablature in your personal history."
+            buttonText="Sign up"
+            onSubmit={handleRegister}
+            footerText="Already have an account?"
+            footerLinkText="Log in"
+            footerLinkTo="/login"
+        />
+    );
+};
+
