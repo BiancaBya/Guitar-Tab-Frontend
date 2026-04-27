@@ -6,7 +6,6 @@ export const ModernNav = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [username, setUsername] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -14,9 +13,7 @@ export const ModernNav = () => {
 
         const syncAuthState = () => {
             const token = localStorage.getItem('access_token');
-            const savedUsername = localStorage.getItem('username') || '';
             setIsLoggedIn(!!token);
-            setUsername(savedUsername);
         };
 
         syncAuthState();
@@ -36,7 +33,6 @@ export const ModernNav = () => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('username');
         setIsLoggedIn(false);
-        setUsername('');
         setMobileMenuOpen(false);
         window.dispatchEvent(new Event('storage'));
         navigate('/');
@@ -57,9 +53,6 @@ export const ModernNav = () => {
                 <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
                     {isLoggedIn ? (
                         <>
-                            <span className="text-slate-400">
-                                Hi, <span className="text-white font-semibold">{username}</span>
-                            </span>
 
                             <Link to="/upload" className="hover:text-white transition">
                                 My Tabs
@@ -96,9 +89,6 @@ export const ModernNav = () => {
                 <div className="md:hidden absolute top-full left-0 w-full glass-panel border-t border-slate-800 p-6 flex flex-col gap-4 shadow-2xl">
                     {isLoggedIn ? (
                         <>
-                            <div className="text-slate-300">
-                                Hi, <span className="text-white font-semibold">{username}</span>
-                            </div>
 
                             <Link
                                 to="/upload"

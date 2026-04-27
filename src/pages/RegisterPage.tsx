@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../components/AuthLayout';
 import { saveAuthData } from '../utils/auth';
 
@@ -10,8 +10,16 @@ interface TokenResponse {
     token_type: string;
 }
 
+interface LocationState {
+    from?: string;
+}
+
 export const RegisterPage = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const state = location.state as LocationState | null;
+    const redirectTo = state?.from || '/';
 
     const handleRegister = async (username: string, password: string) => {
         await axios.post(`${API_BASE_URL}/register`, {
@@ -30,7 +38,7 @@ export const RegisterPage = () => {
         });
 
         saveAuthData(response.data.access_token, username);
-        navigate('/upload');
+        navigate(redirectTo, { replace: true });
     };
 
     return (

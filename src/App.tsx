@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import LandingPage from './pages/LandingPage';
 import { UploadPage } from './pages/UploadPage';
@@ -11,8 +11,10 @@ import { RegisterPage } from './pages/RegisterPage';
 import { isAuthenticated } from './utils/auth';
 
 const ProtectedRoute = ({ children }: { children: React.ReactElement }) => {
+    const location = useLocation();
+
     if (!isAuthenticated()) {
-        return <Navigate to="/login" replace />;
+        return <Navigate to="/login" replace state={{ from: location.pathname }} />;
     }
 
     return children;

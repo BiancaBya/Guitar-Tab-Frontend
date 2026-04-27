@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../components/AuthLayout';
 import { saveAuthData } from '../utils/auth';
 
@@ -10,8 +10,16 @@ interface TokenResponse {
     token_type: string;
 }
 
+interface LocationState {
+    from?: string;
+}
+
 export const LoginPage = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const state = location.state as LocationState | null;
+    const redirectTo = state?.from || '/';
 
     const handleLogin = async (username: string, password: string) => {
         const formData = new URLSearchParams();
@@ -25,7 +33,7 @@ export const LoginPage = () => {
         });
 
         saveAuthData(response.data.access_token, username);
-        navigate('/upload');
+        navigate(redirectTo, { replace: true });
     };
 
     return (
