@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 
 import LandingPage from './pages/LandingPage';
 import { UploadPage } from './pages/UploadPage';
+import { ExportPage } from './pages/ExportPage';
 import { MetronomePage } from './pages/MetronomePage';
 import { TunerPage } from './pages/TunerPage';
 import { ChordsPage } from './pages/ChordsPage';
@@ -35,6 +36,15 @@ function App() {
                     }
                 />
 
+                <Route
+                    path="/export"
+                    element={
+                        <ProtectedRoute>
+                            <ExportPage />
+                        </ProtectedRoute>
+                    }
+                />
+
                 <Route path="/metronome" element={<MetronomePage />} />
                 <Route path="/tuner" element={<TunerPage />} />
                 <Route path="/chords" element={<ChordsPage />} />
@@ -46,4 +56,3 @@ function App() {
 }
 
 export default App;
-

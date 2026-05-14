@@ -53,9 +53,12 @@ export const ModernNav = () => {
                 <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
                     {isLoggedIn ? (
                         <>
-
                             <Link to="/upload" className="hover:text-white transition">
                                 My Tabs
+                            </Link>
+
+                            <Link to="/export" className="hover:text-white transition">
+                                Export PDF
                             </Link>
 
                             <button
@@ -89,13 +92,20 @@ export const ModernNav = () => {
                 <div className="md:hidden absolute top-full left-0 w-full glass-panel border-t border-slate-800 p-6 flex flex-col gap-4 shadow-2xl">
                     {isLoggedIn ? (
                         <>
-
                             <Link
                                 to="/upload"
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="text-slate-300 hover:text-white"
                             >
                                 My Tabs
+                            </Link>
+
+                            <Link
+                                to="/export"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="text-slate-300 hover:text-white"
+                            >
+                                Export PDF
                             </Link>
 
                             <button
@@ -129,4 +139,3 @@ export const ModernNav = () => {
         </nav>
     );
 };
-

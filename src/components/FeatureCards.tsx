@@ -21,10 +21,10 @@ const features = [
     {
         icon: <Download size={32} className="text-purple-400 group-hover:translate-y-1 transition-transform" />,
         title: "Instant Export",
-        desc: "Download your tabs as PDF, MusicXML, or visualize them in the app.",
+        desc: "Choose one of your saved tabs, select the original or beginner friendly version, then download it as PDF.",
         color: "bg-purple-500/10 border-purple-500/20",
         glow: "group-hover:shadow-[0_0_30px_-5px_rgba(168,85,247,0.3)]",
-        link: "/upload"
+        link: "/export"
     },
     {
         icon: <Activity size={32} className="text-rose-400 group-hover:animate-pulse" />,
