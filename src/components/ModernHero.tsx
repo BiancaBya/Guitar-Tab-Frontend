@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-// import { PlayCircle } from 'lucide-react';
 import guitarBg from '../assets/guitar-bg.png';
 
 export const ModernHero = () => {
@@ -43,10 +42,6 @@ export const ModernHero = () => {
                             Get Started <ArrowRight size={20} />
                         </button>
                     </Link>
-
-                    {/*<button className="flex items-center gap-2 glass-panel px-8 py-4 rounded-full text-lg font-medium text-white hover:bg-white/10 transition-all">*/}
-                    {/*    <PlayCircle size={20} className="text-blue-400" /> Watch Demo*/}
-                    {/*</button>*/}
                 </div>
 
             </div>
